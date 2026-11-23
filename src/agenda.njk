@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+title: Agenda
+permalink: /agenda/
+---
+{% set avenir = [] %}{% set passes = [] %}
+{% for e in collections.agenda %}{% if e.data.date | isFuture %}{% set avenir = (avenir.push(e), avenir) %}{% else %}{% set passes = (passes.push(e), passes) %}{% endif %}{% endfor %}
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / Agenda</span><h1>L'agenda SECO du BIC</h1><p>Ateliers et séminaires à la Halle de l'Innovation, ouverts aux entreprises.</p></div>
+  {% if avenir.length %}
+    {% for e in avenir | reverse %}
+    <div class="next"><span class="box-label">Prochain rendez-vous</span><h2>{{ e.data.title }}</h2><p class="meta">{{ e.data.date | dateFr }}{% if e.data.lieu %} · {{ e.data.lieu }}{% endif %}</p><p>{{ e.data.resume }}</p>
+      {% if e.data.inscription %}<p><a class="btn btn-teal" href="{{ e.data.inscription }}">S'inscrire</a></p>{% endif %}</div>
+    {% endfor %}
+  {% else %}
+    <div class="next"><span class="box-label">Prochain rendez-vous</span><h2>À annoncer</h2><p>Le prochain atelier sera publié ici. Pour être prévenu, <a href="{{ '/contact/' | url }}">contactez votre référent SECO</a>.</p></div>
+  {% endif %}
+  <h2>Ateliers passés</h2>
+  <div style="display:grid;gap:10px">
+    {% for e in passes %}
+    <details class="ev"{% if loop.first %} open{% endif %}><summary><span class="d">{{ e.data.date | dateFr }}</span><h3>{{ e.data.title }}</h3></summary>
+      <div class="body">{% if e.data.lieu %}<p class="meta">{{ e.data.lieu }}</p>{% endif %}<p>{{ e.data.resume }}</p>
+        {% if e.data.image %}<img class="ev-img" src="{{ e.data.image | url }}" alt="Photo de l'atelier {{ e.data.title }}" loading="lazy">{% endif %}
+        {% if e.content | trim %}<div class="prose">{{ e.content | safe }}</div>{% endif %}</div></details>
+    {% endfor %}
+  </div>
+</section>

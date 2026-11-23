@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Contact
+permalink: /contact/
+---
+{% set r = site.referent %}
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / Contact</span><h1>Votre référent SECO</h1><p>Il fait le lien avec les services de l'État chargés de la sensibilisation, de l'information et de l'aide aux entreprises en matière de sécurité économique.</p></div>
+  <div class="grid2">
+    <div class="ref"><span><span class="box-label">Montpellier BIC</span></span><span class="name">{{ r.nom }}</span><p>{{ r.fonction }}</p>
+      <span class="line"><a id="c-mail" href="mailto:{{ r.email }}" style="color:inherit">{{ r.email }}</a><button class="copy" data-copy="c-mail">Copier</button></span>
+      <span class="line"><span id="c-tel">{{ r.telephone }}</span><button class="copy" data-copy="c-tel">Copier</button></span></div>
+    <div class="card"><h3>Ce qu'il peut faire pour vous</h3><ul><li>Répondre à une question qui touche la sécurité de votre entreprise</li><li>Remonter une alerte ou une approche suspecte aux services concernés</li><li>Vous informer des menaces connues</li><li>Organiser une sensibilisation</li></ul></div>
+  </div>
+  <div class="card" id="kit"><span class="box-label">Pour les référents régionaux</span><h2>Kit de diffusion</h2><p>Copiez ce texte dans votre lettre d'information ou sur votre intranet.</p>
+    <p id="kit-text" style="color:var(--ink);background:var(--bg);padding:14px;border-radius:8px">{{ site.kit_diffusion }}</p>
+    <div><button class="btn btn-ghost" data-copy="kit-text">Copier le texte</button></div></div>
+</section>

@@ -1,0 +1,186 @@
+# Configuration de l'interface d'administration (Sveltia CMS)
+backend:
+  name: github
+  repo: romL-lab/site-seco
+  branch: main
+  commit_messages:
+    create: "Ajout : {{slug}}"
+    update: "Mise à jour : {{slug}}"
+    delete: "Suppression : {{slug}}"
+    uploadMedia: "Fichier ajouté : {{path}}"
+    deleteMedia: "Fichier supprimé : {{path}}"
+
+site_url: https://roml-lab.github.io/site-seco/
+display_url: https://roml-lab.github.io/site-seco/
+locale: fr
+
+media_folder: src/fichiers
+public_folder: /fichiers
+
+collections:
+  - name: actus
+    label: Actualités
+    label_singular: Actualité
+    description: "Flash DGSI, alertes, nouvelles ressources. Les 3 plus récentes s'affichent sur l'accueil."
+    folder: src/actus
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: [date, title]
+    summary: "{{date}} · {{title}}"
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD" }
+      - { name: resume, label: Résumé, widget: text, hint: "Deux ou trois phrases." }
+      - { name: fichier, label: "Document à télécharger (PDF…)", widget: file, required: false }
+      - { name: lien, label: "Lien vers la source", widget: string, required: false, hint: "Adresse complète, https://…" }
+      - { name: body, label: "Texte détaillé (facultatif)", widget: markdown, required: false }
+
+  - name: agenda
+    label: Agenda
+    label_singular: Événement
+    description: "Un événement dont la date est passée bascule seul dans « Ateliers passés »."
+    folder: src/agenda
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: [date, title]
+    summary: "{{date}} · {{title}}"
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD" }
+      - { name: lieu, label: Lieu, widget: string, required: false, default: "Halle de l'Innovation" }
+      - { name: resume, label: "Présentation courte", widget: text }
+      - { name: inscription, label: "Lien d'inscription", widget: string, required: false }
+      - { name: image, label: Photo, widget: image, required: false }
+      - { name: body, label: "Synthèse après l'atelier (facultatif)", widget: markdown, required: false }
+
+  - name: ressources
+    label: Ressources
+    label_singular: Ressource
+    folder: src/ressources
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{type}})"
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - name: theme
+        label: Thème
+        widget: select
+        options:
+          - { label: "Sécurité économique", value: seco }
+          - { label: "Cybersécurité", value: cyber }
+          - { label: "Données sensibles", value: donnees }
+          - { label: "Réglementation", value: regl }
+      - { name: type, label: Type, widget: select, options: ["Guide", "Fiche", "Flash DGSI", "Outil", "Tableur", "Formation"] }
+      - { name: resume, label: Résumé, widget: text }
+      - { name: source, label: "Source (ANSSI, SISSE…)", widget: string, required: false }
+      - { name: fichier, label: "Fichier à télécharger", widget: file, required: false }
+      - { name: lien, label: "Ou lien externe", widget: string, required: false, hint: "Si un fichier est joint, c'est lui qui est proposé." }
+      - { name: ordre, label: "Ordre d'affichage", widget: number, required: false, value_type: int, hint: "Plus petit = plus haut dans la liste." }
+
+  - name: pages
+    label: Pages de fond
+    label_singular: Page
+    description: "Comprendre la SECO, Menaces cyber, Réglementation : une introduction puis des sections de cartes."
+    folder: src/pages
+    create: false
+    delete: false
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: menu, label: "Nom dans le menu", widget: string, hint: "Pour changer le menu lui-même, voir Réglages > Menu." }
+      - { name: permalink, label: Adresse, widget: hidden }
+      - { name: ordre, label: Ordre, widget: hidden }
+      - { name: introduction, label: Introduction, widget: markdown }
+      - name: sections
+        label: Sections
+        label_singular: Section
+        widget: list
+        summary: "{{fields.titre}}"
+        fields:
+          - { name: titre, label: "Titre de la section", widget: string, required: false }
+          - { name: colonnes, label: "Cartes par ligne", widget: select, options: [1, 2, 3], default: 2 }
+          - name: blocs
+            label: Cartes
+            label_singular: Carte
+            widget: list
+            summary: "{{fields.titre}}"
+            fields:
+              - { name: etiquette, label: "Étiquette (facultatif)", widget: string, required: false }
+              - { name: titre, label: Titre, widget: string }
+              - { name: texte, label: Texte, widget: markdown }
+              - { name: lien, label: "Lien (facultatif)", widget: string, required: false, hint: "https://… ou /ressources/" }
+              - { name: texte_lien, label: "Texte du lien", widget: string, required: false }
+
+  - name: reglages
+    label: Réglages
+    files:
+      - name: site
+        label: "Accueil, référent et chiffres"
+        file: src/_data/site.json
+        fields:
+          - { name: titre, label: "Nom du site", widget: string }
+          - { name: sous_titre, label: "Sous-titre", widget: string }
+          - { name: accroche, label: "Titre de l'accueil", widget: string }
+          - { name: introduction, label: "Texte d'accueil", widget: text }
+          - name: referent
+            label: "Référent SECO"
+            widget: object
+            fields:
+              - { name: nom, label: Nom, widget: string }
+              - { name: fonction, label: Fonction, widget: string }
+              - { name: email, label: "Adresse e-mail", widget: string }
+              - { name: telephone, label: Téléphone, widget: string }
+              - { name: presentation, label: Présentation, widget: text }
+          - name: chiffres
+            label: "Chiffres clés de l'accueil"
+            widget: list
+            summary: "{{fields.valeur}} {{fields.texte}}"
+            fields:
+              - { name: valeur, label: Valeur, widget: string }
+              - { name: texte, label: Légende, widget: string }
+          - { name: chiffres_source, label: "Source des chiffres", widget: string, required: false }
+          - { name: kit_diffusion, label: "Texte du kit de diffusion", widget: text }
+      - name: outils
+        label: "Outils de la page Se tester"
+        file: src/_data/outils.json
+        fields:
+          - name: principal
+            label: "Outil mis en avant"
+            widget: object
+            fields:
+              - { name: nom, label: Nom, widget: string }
+              - { name: editeur, label: Éditeur, widget: string }
+              - { name: texte, label: Description, widget: text }
+              - { name: lien, label: Lien, widget: string }
+          - name: liste
+            label: "Autres outils"
+            widget: list
+            summary: "{{fields.nom}}"
+            fields:
+              - { name: nom, label: Nom, widget: string }
+              - { name: editeur, label: Éditeur, widget: string }
+              - { name: texte, label: Description, widget: text }
+              - { name: lien, label: Lien, widget: string }
+      - name: incident
+        label: "Page En cas d'incident"
+        file: src/_data/incident.json
+        fields:
+          - { name: introduction, label: Introduction, widget: text }
+          - name: situations
+            label: Situations
+            widget: list
+            summary: "{{fields.titre}}"
+            fields:
+              - { name: titre, label: Titre, widget: string }
+              - { name: etapes, label: "Étapes, dans l'ordre", widget: list, field: { name: etape, label: Étape, widget: string } }
+              - { name: contact, label: "Qui contacter", widget: markdown }
+      - name: navigation
+        label: Menu
+        file: src/_data/navigation.json
+        fields:
+          - name: items
+            label: "Entrées du menu"
+            widget: list
+            summary: "{{fields.titre}}"
+            fields:
+              - { name: titre, label: Libellé, widget: string }
+              - { name: url, label: "Adresse (ex. /agenda/)", widget: string }

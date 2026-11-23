@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% if title and page.url != "/" %}{{ title }} · {% endif %}{{ site.titre }}</title>
+<meta name="description" content="{{ description or site.introduction }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="{{ '/assets/style.css' | url }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c9594b'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='700' font-size='18' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="{{ '/' | url }}" aria-label="Accueil, {{ site.titre }}">
+      <img src="{{ '/assets/logo-bic.jpg' | url }}" alt="Montpellier BIC" width="98" height="42">
+      <span><span class="mark">SECO<span>.</span></span><small>{{ site.sous_titre }}</small></span>
+    </a>
+    <span class="spacer"></span>
+    <a class="btn btn-ghost" href="{{ '/contact/' | url }}">Contact</a>
+    <a class="btn btn-alert" href="{{ '/incident/' | url }}">J'ai un incident</a>
+  </div>
+  <nav class="main" aria-label="Menu principal"><div class="wrap">
+    {%- for item in navigation.items %}
+    <a href="{{ item.url | url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.titre }}</a>
+    {%- endfor %}
+  </div></nav>
+</header>
+<main class="wrap" id="contenu">
+{{ content | safe }}
+</main>
+<footer><div class="wrap">
+  <div><h3>{{ site.titre }}</h3><p>Site du référent sécurité économique de Montpellier BIC (Business &amp; Innovation Centre). Accès libre.</p></div>
+  <div><h3>Liens officiels</h3><ul><li><a href="https://sisse.entreprises.gouv.fr/fr">SISSE</a></li><li><a href="https://cyber.gouv.fr">ANSSI</a></li><li><a href="https://www.cyberocc.com/">Cyber'Occ</a></li></ul></div>
+  <div><h3>Le site</h3><ul><li><a href="{{ '/contact/' | url }}">Contact</a></li><li><a href="{{ '/mentions-legales/' | url }}">Mentions légales</a></li></ul></div>
+</div></footer>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+// Boutons « Copier » : copie le texte de l'élément visé, sinon le sélectionne.
+(function(){
+  var toast=document.getElementById('toast'),tt;
+  function say(m){toast.textContent=m;toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},2200)}
+  function sel(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(!b)return;var el=document.getElementById(b.dataset.copy);
+    var fb=function(){sel(el);say('Texte sélectionné : faites Ctrl+C')};
+    try{navigator.clipboard.writeText(el.textContent.trim()).then(function(){say('Copié')},fb)}catch(_){fb()}});
+})();
+</script>
+</body>
+</html>

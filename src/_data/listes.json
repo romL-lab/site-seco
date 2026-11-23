@@ -1,0 +1,9 @@
+{
+  "themes": [
+    { "id": "seco", "nom": "Sécurité économique" },
+    { "id": "cyber", "nom": "Cybersécurité" },
+    { "id": "donnees", "nom": "Données sensibles" },
+    { "id": "regl", "nom": "Réglementation" }
+  ],
+  "types": ["Guide", "Fiche", "Flash DGSI", "Outil", "Tableur", "Formation"]
+}

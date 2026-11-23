@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+title: Se tester
+permalink: /se-tester/
+---
+{% set p = outils.principal %}
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / Se tester</span><h1>Testez la vulnérabilité de votre entreprise</h1><p>Des outils officiels et gratuits, utilisables en quelques minutes, sans compétence technique.</p></div>
+  <div class="card" style="border-color:var(--teal)"><span class="tool"><span class="who">{{ p.editeur }} · recommandé pour commencer</span><h2>{{ p.nom }}</h2><p>{{ p.texte }}</p><span><a class="btn btn-teal" href="{{ p.lien }}">Lancer {{ p.nom }}</a></span></span></div>
+  <div class="grid3">
+    {% for o in outils.liste %}
+    <div class="card tool"><span class="who">{{ o.editeur }}</span><h3>{{ o.nom }}</h3><p>{{ o.texte }}</p><a class="more" href="{{ o.lien }}">Ouvrir →</a></div>
+    {% endfor %}
+  </div>
+</section>

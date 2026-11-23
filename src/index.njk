@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+title: Accueil
+permalink: /
+---
+<section class="view" data-view="accueil">
+  <div class="banner"><img src="{{ '/assets/banniere.jpg' | url }}" alt="Illustration : façade d'un bâtiment d'entreprise surveillée par une caméra et un drone" width="1533" height="453"></div>
+  <div class="hero">
+    <div class="hero-main">
+      <span class="box-label">Montpellier BIC</span>
+      <h1>{{ site.accroche }}</h1>
+      <p>{{ site.introduction }}</p>
+      <div class="actions"><a class="btn btn-teal" href="{{ '/se-tester/' | url }}">Tester ma vulnérabilité</a><a class="btn btn-ghost" href="{{ '/comprendre/' | url }}">Comprendre les menaces</a></div>
+    </div>
+    {% set r = site.referent %}
+    <aside class="ref" aria-label="Votre référent SECO">
+      <span><span class="box-label">Votre référent SECO</span></span>
+      <span class="name">{{ r.nom }}</span>
+      <p>{{ r.presentation }}</p>
+      <span class="line"><a id="ref-mail" href="mailto:{{ r.email }}" style="color:inherit">{{ r.email }}</a><button class="copy" data-copy="ref-mail">Copier</button></span>
+      <span class="line"><span id="ref-tel">{{ r.telephone }}</span><button class="copy" data-copy="ref-tel">Copier</button></span>
+    </aside>
+  </div>
+
+  <div class="doors">
+    <a class="door" href="{{ '/comprendre/' | url }}"><span class="box-label">S'informer</span><h3>Comprendre les menaces</h3><ul><li>Les 4 types de menaces</li><li>Les menaces cyber</li><li>La réglementation : NIS2, AI Act, BDU</li></ul><span class="go">Comprendre →</span></a>
+    <a class="door" href="{{ '/se-tester/' | url }}"><span class="box-label">Agir</span><h3>Se tester et se protéger</h3><ul><li>DIAGSECO et diagnostics cyber</li><li>Les 10 règles d'or</li><li>Guides et fiches à télécharger</li></ul><span class="go">Passer à l'action →</span></a>
+    <a class="door" href="{{ '/agenda/' | url }}"><span class="box-label">Suivre</span><h3>Rester informé</h3><ul><li>Flash DGSI et alertes</li><li>Ateliers SECO au BIC</li><li>Contact du référent</li></ul><span class="go">Voir l'agenda →</span></a>
+  </div>
+
+  <div>
+    <h2>La menace en chiffres</h2>
+    <div class="figures" style="margin-top:12px">
+      {% for c in site.chiffres %}<div class="fig"><b>{{ c.valeur }}</b><span>{{ c.texte }}</span></div>{% endfor %}
+    </div>
+    {% if site.chiffres_source %}<p class="src" style="margin-top:8px">{{ site.chiffres_source }}</p>{% endif %}
+  </div>
+
+  <div class="section-head"><div><h2>Dernières actualités</h2></div><a href="{{ '/actualites/' | url }}">Toutes les actualités</a></div>
+  <div class="grid3">
+    {% for a in collections.actus | head(3) %}
+    <article class="card"><span class="meta">{{ a.data.date | dateCourte }}</span><h3>{{ a.data.title }}</h3><p>{{ a.data.resume }}</p>
+      {% if a.data.fichier or a.data.lien %}<a class="more" href="{{ a.data | lienRessource }}">{% if a.data.fichier %}Télécharger{% else %}Lire{% endif %} →</a>{% endif %}</article>
+    {% endfor %}
+  </div>
+
+  <div class="relay">
+    <div><h2>Vous êtes référent SECO dans une autre région ?</h2><p>Proposez ce site à vos structures et adhérents. Un texte de présentation est prêt à copier.</p></div>
+    <a class="btn btn-teal" href="{{ '/contact/' | url }}#kit">Kit de diffusion</a>
+  </div>
+</section>

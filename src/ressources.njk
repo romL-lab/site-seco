@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: Ressources
+permalink: /ressources/
+---
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / Ressources</span><h1>Ressources</h1><p>Les guides, fiches et outils officiels, réunis au même endroit.</p></div>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Rechercher : NIS2, quishing, données sensibles…" aria-label="Rechercher une ressource">
+    <select id="f-theme" aria-label="Filtrer par thème"><option value="">Tous les thèmes</option>{% for t in listes.themes %}<option value="{{ t.id }}">{{ t.nom }}</option>{% endfor %}</select>
+    <select id="f-type" aria-label="Filtrer par type"><option value="">Tous les types</option>{% for t in listes.types %}<option value="{{ t }}">{{ t }}</option>{% endfor %}</select>
+  </div>
+  <div class="meta" id="count" aria-live="polite">{{ collections.ressources.length }} ressources</div>
+  <div class="res-list" id="res-list">
+    {% for r in collections.ressources %}{% set d = r.data %}
+    <article class="res" data-theme="{{ d.theme }}" data-type="{{ d.type }}" data-text="{{ d.title }} {{ d.resume }} {{ d.source }}">
+      <span class="kind">{{ d.type }}</span>
+      <div><h3>{{ d.title }}</h3><p>{{ d.resume }}</p><span class="meta">{{ d.theme | themeNom(listes.themes) }}{% if d.source %} · {{ d.source }}{% endif %}</span></div>
+      {% if d.fichier or d.lien %}<a class="btn btn-ghost" href="{{ d | lienRessource }}">{% if d.fichier %}Télécharger{% else %}Ouvrir{% endif %}</a>{% else %}<span class="meta">Lien à venir</span>{% endif %}
+    </article>
+    {% endfor %}
+    <div class="empty" id="empty" hidden>Aucune ressource ne correspond. Essayez un autre mot ou retirez un filtre.</div>
+  </div>
+</section>
+<script>
+(function(){
+  var q=document.getElementById('q'),ft=document.getElementById('f-theme'),fy=document.getElementById('f-type');
+  var items=[].slice.call(document.querySelectorAll('.res'));
+  var norm=function(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')};
+  var p=new URLSearchParams(location.search);if(p.get('theme'))ft.value=p.get('theme');
+  function run(){var v=norm(q.value),th=ft.value,ty=fy.value,n=0;
+    items.forEach(function(el){var ok=(!th||el.dataset.theme===th)&&(!ty||el.dataset.type===ty)&&(!v||norm(el.dataset.text).indexOf(v)>-1);el.hidden=!ok;if(ok)n++});
+    document.getElementById('count').textContent=n+' ressource'+(n>1?'s':'');document.getElementById('empty').hidden=n>0}
+  [q,ft,fy].forEach(function(el){el.addEventListener('input',run)});run();
+})();
+</script>

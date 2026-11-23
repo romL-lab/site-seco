@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+title: En cas d'incident
+permalink: /incident/
+---
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / En cas d'incident</span><h1>Que se passe-t-il ?</h1><p>{{ incident.introduction }}</p></div>
+  <div class="chooser" role="group" aria-label="Type d'incident">
+    {% for s in incident.situations %}<button class="chip" data-sit="{{ loop.index0 }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ s.titre }}</button>{% endfor %}
+  </div>
+  {% for s in incident.situations %}
+  <div class="situation" data-sit-panel="{{ loop.index0 }}" style="display:grid;gap:16px"{% if not loop.first %} hidden{% endif %}>
+    <h2>{{ s.titre }}</h2>
+    <div class="steps">{% for e in s.etapes %}<div class="step"><p>{{ e }}</p></div>{% endfor %}</div>
+    <div class="call">{{ s.contact | md | safe }}</div>
+  </div>
+  {% endfor %}
+  <p class="meta">Votre référent SECO : {{ site.referent.nom }}, {{ site.referent.telephone }}, {{ site.referent.email }}</p>
+</section>
+<script>
+(function(){
+  var chips=[].slice.call(document.querySelectorAll('[data-sit]')),panels=[].slice.call(document.querySelectorAll('[data-sit-panel]'));
+  chips.forEach(function(c){c.addEventListener('click',function(){chips.forEach(function(x){x.setAttribute('aria-pressed',x===c)});
+    panels.forEach(function(p){p.hidden=p.dataset.sitPanel!==c.dataset.sit})})});
+})();
+</script>

@@ -1,0 +1,15 @@
+{
+  "name": "site-seco",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site SECO du BIC : sécurité économique des entreprises",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.8",
+    "markdown-it": "14.1.0"
+  }
+}

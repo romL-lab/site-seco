@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+title: Actualités
+permalink: /actualites/
+---
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / Actualités</span><h1>Actualités</h1><p>Flash de la DGSI, publications officielles et nouvelles ressources, de la plus récente à la plus ancienne.</p></div>
+  <div>
+    {% for a in collections.actus %}
+    <article class="news"><span class="date">{{ a.data.date | dateCourte }}</span><div><h3>{{ a.data.title }}</h3><p>{{ a.data.resume }}</p>
+      {% if a.content | trim %}<div class="prose" style="margin-top:8px">{{ a.content | safe }}</div>{% endif %}
+      {% if a.data.fichier or a.data.lien %}<div class="links"><a href="{{ a.data | lienRessource }}">{% if a.data.fichier %}Télécharger le document{% else %}Lire la source{% endif %} →</a></div>{% endif %}</div></article>
+    {% endfor %}
+  </div>
+</section>

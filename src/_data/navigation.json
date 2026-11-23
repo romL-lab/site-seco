@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "titre": "Comprendre la SECO",
+      "url": "/comprendre/"
+    },
+    {
+      "titre": "Menaces cyber",
+      "url": "/cyber/"
+    },
+    {
+      "titre": "Réglementation",
+      "url": "/reglementation/"
+    },
+    {
+      "titre": "Se tester",
+      "url": "/se-tester/"
+    },
+    {
+      "titre": "Ressources",
+      "url": "/ressources/"
+    },
+    {
+      "titre": "Actualités",
+      "url": "/actualites/"
+    },
+    {
+      "titre": "Agenda",
+      "url": "/agenda/"
+    }
+  ]
+}

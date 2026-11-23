@@ -1,0 +1,44 @@
+{
+  "introduction": "Choisissez la situation la plus proche. En cas de danger immédiat pour des personnes, appelez le 17.",
+  "situations": [
+    {
+      "titre": "Cyberattaque ou rançongiciel",
+      "etapes": [
+        "Débranchez les postes touchés du réseau (câble et Wi-Fi), sans les éteindre.",
+        "Ne payez pas la rançon : c'est la recommandation des autorités.",
+        "Prévenez votre prestataire informatique et conservez les preuves.",
+        "Portez plainte dans les 72 heures : c'est obligatoire pour être indemnisé par votre assurance cyber."
+      ],
+      "contact": "**17Cyber**, le guichet officiel d'assistance : [17cyber.gouv.fr](https://17cyber.gouv.fr). Prestataires de réponse à incident labellisés sur [MesServicesCyber](https://messervices.cyber.gouv.fr/prestataires-labellises/)."
+    },
+    {
+      "titre": "Virement frauduleux, faux RIB",
+      "etapes": [
+        "Appelez immédiatement votre banque pour demander le blocage ou le rappel des fonds.",
+        "Rassemblez les échanges : courriels, factures, numéros appelants.",
+        "Portez plainte au commissariat ou à la gendarmerie.",
+        "Prévenez votre service comptable : une seconde tentative suit souvent."
+      ],
+      "contact": "**Votre banque**, puis la police ou la gendarmerie. Les premières heures comptent."
+    },
+    {
+      "titre": "Approche suspecte",
+      "etapes": [
+        "Ne donnez pas suite tout de suite et ne transmettez aucun document.",
+        "Notez les faits : qui, quand, quelles demandes.",
+        "Parlez-en à votre référent SECO, en toute confidentialité : il remonte l'alerte aux services de l'État."
+      ],
+      "contact": "**Votre référent SECO** : voir la page Contact."
+    },
+    {
+      "titre": "Fuite d'informations",
+      "etapes": [
+        "Identifiez ce qui est sorti, quand et par quel canal.",
+        "Coupez les accès concernés.",
+        "Si des données personnelles sont touchées, vérifiez votre obligation de notification à la CNIL.",
+        "Contactez votre référent SECO pour être orienté."
+      ],
+      "contact": "**Votre référent SECO** : voir la page Contact."
+    }
+  ]
+}

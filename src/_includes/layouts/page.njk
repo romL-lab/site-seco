@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+---
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / {{ menu or title }}</span><h1>{{ title }}</h1>
+    {% if introduction %}<div class="prose">{{ introduction | md | safe }}</div>{% endif %}</div>
+  {% for s in sections %}
+  <div class="section">
+    {% if s.titre %}<h2>{{ s.titre }}</h2>{% endif %}
+    <div class="grid{{ s.colonnes or 2 }}">
+      {% for b in s.blocs %}
+      <article class="card">
+        {% if b.etiquette %}<span class="box-label">{{ b.etiquette }}</span>{% endif %}
+        <h3>{{ b.titre }}</h3>
+        <div class="prose">{{ b.texte | md | safe }}</div>
+        {% if b.lien %}<a class="more" href="{% if b.lien.startsWith('/') %}{{ b.lien | url }}{% else %}{{ b.lien }}{% endif %}">{{ b.texte_lien or "En savoir plus" }} →</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+  {% if content | trim %}<div class="card prose">{{ content | safe }}</div>{% endif %}
+</section>
