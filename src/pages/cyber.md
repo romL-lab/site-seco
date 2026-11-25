@@ -44,7 +44,10 @@ sections:
         texte: "Des assurances couvrent les dommages subis, la gestion de crise et les cyberfraudes. Depuis avril 2023, une victime doit porter plainte dans les 72 heures pour être indemnisée par son assureur."
       - etiquette: ""
         titre: "Cloud et hébergement"
-        texte: "Le Cloud Act permet aux autorités américaines d'accéder aux données stockées par des entreprises américaines, même en Europe, alors que le RGPD encadre strictement les transferts hors de l'Union. À prendre en compte dans le choix de vos prestataires."
+        texte: |
+          Un prestataire américain n'est pas interdit par le RGPD : les transferts sont possibles via le Data Privacy Framework UE–États-Unis (2023) ou des clauses contractuelles types, avec un contrat de sous-traitance, des données hébergées en Europe et chiffrées.
+
+          Le risque est ailleurs : le **Cloud Act** permet à la justice américaine d'exiger les données d'une entreprise américaine, même stockées en Europe. Pour vos données sensibles (R&D, secrets d'affaires), préférez un prestataire européen, idéalement qualifié **SecNumCloud** par l'ANSSI.
       - etiquette: ""
         titre: "Former vos salariés"
         texte: "SensCyber est un programme de sensibilisation gratuit, accessible aux collaborateurs de TPE et PME."
