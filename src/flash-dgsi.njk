@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: Les Flash ingérence de la DGSI
+permalink: /flash-dgsi/
+---
+<section class="view">
+  <div class="page-head"><span class="crumb"><a href="{{ '/' | url }}">Accueil</a> / <a href="{{ '/ressources/' | url }}">Ressources</a> / Flash DGSI</span><h1>Les Flash ingérence de la DGSI</h1>
+    <p>Chaque Flash présente des cas réels d'ingérence économique, démarqués, et les recommandations de la Direction générale de la sécurité intérieure. À télécharger et à diffuser.</p></div>
+  {% for g in collections.flashParAnnee %}
+  <div class="section">
+    <h2>{{ g.annee }}</h2>
+    <div class="res-list">
+      {% for f in g.items %}
+      <article class="res"><span class="kind">N°&nbsp;{{ f.data.numero }}</span>
+        <div><h3>{{ f.data.title }}</h3>{% if f.data.resume %}<p>{{ f.data.resume }}</p>{% endif %}<span class="meta">{{ f.data.date | moisAnnee }}</span></div>
+        {% if f.data.fichier %}<a class="btn btn-ghost" href="{{ f.data.fichier | url }}">Télécharger</a>{% endif %}</article>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>

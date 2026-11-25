@@ -31,6 +31,7 @@ export default function (eleventyConfig) {
   // Lien externe ou fichier du site
   eleventyConfig.addFilter("lienRessource", function (r) {
     if (r.fichier) return eleventyConfig.getFilter("url")(r.fichier);
+    if (r.lien && r.lien.startsWith("/")) return eleventyConfig.getFilter("url")(r.lien);
     return r.lien || "";
   });
 
@@ -45,6 +46,22 @@ export default function (eleventyConfig) {
   const byDateDesc = (a, b) => iso(b.data.date).localeCompare(iso(a.data.date));
   eleventyConfig.addCollection("actus", (api) => api.getFilteredByGlob("src/actus/*.md").sort(byDateDesc));
   eleventyConfig.addCollection("agenda", (api) => api.getFilteredByGlob("src/agenda/*.md").sort(byDateDesc));
+  // Flash DGSI : du plus récent au plus ancien, regroupés par année
+  eleventyConfig.addCollection("flashParAnnee", (api) => {
+    const items = api.getFilteredByGlob("src/flash/*.md").sort((a, b) => iso(b.data.date).localeCompare(iso(a.data.date)) || (b.data.numero || 0) - (a.data.numero || 0));
+    const annees = [];
+    for (const it of items) {
+      const y = iso(it.data.date).slice(0, 4);
+      let g = annees.find((x) => x.annee === y);
+      if (!g) annees.push((g = { annee: y, items: [] }));
+      g.items.push(it);
+    }
+    return annees;
+  });
+  eleventyConfig.addFilter("moisAnnee", (d) => {
+    const [y, m] = iso(d).split("-").map(Number);
+    return `${MOIS[m - 1]} ${y}`;
+  });
   eleventyConfig.addCollection("ressources", (api) =>
     api.getFilteredByGlob("src/ressources/*.md").sort((a, b) => (a.data.ordre ?? 99) - (b.data.ordre ?? 99) || a.data.title.localeCompare(b.data.title, "fr"))
   );

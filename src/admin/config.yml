@@ -53,6 +53,24 @@ collections:
       - { name: image, label: Photo, widget: image, required: false }
       - { name: body, label: "Synthèse après l'atelier (facultatif)", widget: markdown, required: false }
 
+  - name: flash
+    label: Flash DGSI
+    label_singular: Flash DGSI
+    description: "Déposez le PDF, indiquez son numéro, son titre et son mois : il se range seul dans la bonne année sur la page Flash DGSI."
+    folder: src/flash
+    create: true
+    slug: "flash-{{fields.numero}}"
+    sortable_fields: [numero, date]
+    summary: "N° {{numero}} · {{title}}"
+    media_folder: /src/fichiers/flash
+    public_folder: /fichiers/flash
+    fields:
+      - { name: numero, label: "Numéro", widget: number, value_type: int }
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: "Mois de parution (choisir le 1er du mois)", widget: datetime, time_format: false, date_format: "MM/YYYY", format: "YYYY-MM-DD" }
+      - { name: fichier, label: "PDF du Flash", widget: file }
+      - { name: resume, label: "Résumé (facultatif)", widget: text, required: false }
+
   - name: ressources
     label: Ressources
     label_singular: Ressource
