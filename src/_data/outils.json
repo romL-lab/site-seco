@@ -25,12 +25,6 @@
       "lien": "https://diagseco.finances.gouv.fr/autodiagnostic-loi-1968"
     },
     {
-      "nom": "Autodiagnostics de cybersécurité",
-      "editeur": "Ministères économiques",
-      "texte": "Des tests simples avec un code couleur, pour vous ou vos fournisseurs. Évitez le test où l'on saisit son mot de passe.",
-      "lien": "https://ssi.economie.gouv.fr/"
-    },
-    {
       "nom": "Tester la configuration de votre domaine",
       "editeur": "Merox",
       "texte": "Outil gratuit proposé par une entreprise dont le fondateur est aussi référent SECO.",
