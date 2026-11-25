@@ -6,11 +6,41 @@
     "lien": "https://diagseco.finances.gouv.fr/home"
   },
   "liste": [
-    { "nom": "Diagnostic de maturité cyber", "editeur": "ANSSI", "texte": "Sur MesServicesCyber, il oriente ensuite vers des actions concrètes et des prestataires labellisés.", "lien": "https://messervices.cyber.gouv.fr/" },
-    { "nom": "Suis-je concerné par NIS2 ?", "editeur": "ANSSI", "texte": "Le simulateur répond en trois questions.", "lien": "https://monespacenis2.cyber.gouv.fr/simulateur" },
-    { "nom": "Autodiagnostic loi de blocage", "editeur": "SISSE", "texte": "Un questionnaire guidé en 9 questions pour une première orientation.", "lien": "https://www.entreprises.gouv.fr/espace-entreprises/s-informer-sur-la-reglementation/la-loi-de-blocage" },
-    { "nom": "Autodiagnostics de cybersécurité", "editeur": "Ministères économiques", "texte": "Des tests simples avec un code couleur, pour vous ou vos fournisseurs. Évitez le test où l'on saisit son mot de passe.", "lien": "https://ssi.economie.gouv.fr/" },
-    { "nom": "Tester la configuration de votre domaine", "editeur": "Merox", "texte": "Outil gratuit proposé par une entreprise dont le fondateur est aussi référent SECO.", "lien": "https://check.merox.io/" },
-    { "nom": "Mon adresse a-t-elle fuité ?", "editeur": "Have I Been Pwned", "texte": "Vérifiez si un courriel ou un téléphone figure dans une fuite de données connue.", "lien": "https://haveibeenpwned.com/" }
+    {
+      "nom": "Diagnostic de maturité cyber",
+      "editeur": "ANSSI",
+      "texte": "Sur MesServicesCyber, il oriente ensuite vers des actions concrètes et des prestataires labellisés.",
+      "lien": "https://messervices.cyber.gouv.fr/"
+    },
+    {
+      "nom": "Suis-je concerné par NIS2 ?",
+      "editeur": "ANSSI",
+      "texte": "Le simulateur répond en trois questions.",
+      "lien": "https://monespacenis2.cyber.gouv.fr/simulateur"
+    },
+    {
+      "nom": "Autodiagnostic loi de blocage",
+      "editeur": "SISSE",
+      "texte": "Un questionnaire guidé en 9 questions pour une première orientation.",
+      "lien": "https://diagseco.finances.gouv.fr/autodiagnostic-loi-1968"
+    },
+    {
+      "nom": "Autodiagnostics de cybersécurité",
+      "editeur": "Ministères économiques",
+      "texte": "Des tests simples avec un code couleur, pour vous ou vos fournisseurs. Évitez le test où l'on saisit son mot de passe.",
+      "lien": "https://ssi.economie.gouv.fr/"
+    },
+    {
+      "nom": "Tester la configuration de votre domaine",
+      "editeur": "Merox",
+      "texte": "Outil gratuit proposé par une entreprise dont le fondateur est aussi référent SECO.",
+      "lien": "https://check.merox.io/"
+    },
+    {
+      "nom": "Mon adresse a-t-elle fuité ?",
+      "editeur": "Have I Been Pwned",
+      "texte": "Vérifiez si un courriel ou un téléphone figure dans une fuite de données connue.",
+      "lien": "https://haveibeenpwned.com/"
+    }
   ]
 }
