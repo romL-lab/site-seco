@@ -5,7 +5,7 @@ Site du référent sécurité économique de Montpellier BIC : https://roml-lab.
 ## Mettre le site à jour (sans rien installer)
 
 1. Ouvrez https://roml-lab.github.io/site-seco/admin/ dans votre navigateur.
-2. Connectez-vous avec votre compte GitHub (ou un jeton d'accès personnel GitHub).
+2. Cliquez sur « Sign In Using Access Token » et collez votre clé d'accès GitHub (à créer une fois sur https://github.com/settings/personal-access-tokens/new : dépôt site-seco, permission « Contents » en lecture et écriture). Le bouton « Sign In with GitHub » ne fonctionne pas ici : il passe par Netlify, que le site n'utilise pas.
 3. Modifiez une actualité, un événement, une ressource ou les réglages, puis cliquez sur « Enregistrer ».
 4. Le site se met à jour tout seul en 1 à 2 minutes.
 
