@@ -11,10 +11,19 @@
     "presentation": "Il fait le lien avec les services de l'État, remonte vos alertes et diffuse les menaces connues. Une question qui touche à la sécurité de votre entreprise ? Sollicitez-le."
   },
   "chiffres": [
-    { "valeur": "840", "texte": "alertes sur des entreprises stratégiques en 2023, dont 60 % liées à une menace étrangère" },
-    { "valeur": "70", "texte": "alertes par mois en moyenne en 2024" },
-    { "valeur": "2e", "texte": "région de France pour les menaces avérées en 2024 : l'Occitanie" }
+    {
+      "valeur": "840",
+      "texte": "alertes sur des entreprises stratégiques en 2023, dont 60 % liées à une menace étrangère"
+    },
+    {
+      "valeur": "70",
+      "texte": "alertes par mois en moyenne en 2024"
+    },
+    {
+      "valeur": "2e",
+      "texte": "région de France pour les menaces avérées en 2024 : l'Occitanie"
+    }
   ],
-  "chiffres_source": "Chiffres nationaux de la sécurité économique. Source à préciser.",
+  "chiffres_source": "Chiffres nationaux de la sécurité économique.",
   "kit_diffusion": "Votre entreprise est-elle bien protégée ? Le site SECO du BIC de Montpellier réunit les guides officiels, les outils d'autodiagnostic gratuits (DIAGSECO, NIS2…), les alertes de la DGSI et la marche à suivre en cas d'incident. Accès libre : https://roml-lab.github.io/site-seco/"
 }
