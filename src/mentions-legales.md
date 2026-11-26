@@ -13,8 +13,8 @@ maj: "2026-11-26"
 
 Ce site est publié par le référent sécurité économique du BIC de Montpellier Méditerranée Métropole (Business &amp; Innovation Centre).
 
-- Adresse : **[à compléter]**
-- Directeur de la publication : **[à compléter]**
+- Adresse : Halle de l'innovation, 10 place Françoise Héritier, ZAC Cambacérès, CS 50948, 34967 Montpellier Cedex 2
+- Responsable de la publication : la mission sécurité économique du BIC de Montpellier
 - Contact : {{ site.referent.email }}
 
 </div></article>
@@ -41,7 +41,7 @@ Le site ne propose aucun formulaire, aucun compte et ne dépose aucun cookie de 
 
 Comme tout site, l'hébergeur enregistre techniquement les adresses IP des visiteurs pour assurer le service. Les polices de caractères sont chargées depuis Google Fonts.
 
-Si vous écrivez au référent SECO, votre message n'est utilisé que pour vous répondre. Vous disposez d'un droit d'accès, de rectification et d'effacement (RGPD et loi « Informatique et libertés ») auprès du délégué à la protection des données de la Métropole : **[coordonnées à compléter]**.
+Si vous écrivez au référent SECO, votre message n'est utilisé que pour vous répondre. Vous disposez d'un droit d'accès, de rectification et d'effacement (RGPD et loi « Informatique et libertés ») auprès du délégué à la protection des données de la Métropole : Eric Ledoux, [eric.ledoux@montpellier.fr](mailto:eric.ledoux@montpellier.fr). Vous pouvez aussi saisir la CNIL ([cnil.fr](https://www.cnil.fr)).
 
 </div></article>
 
